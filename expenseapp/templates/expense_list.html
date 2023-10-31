@@ -9,7 +9,8 @@
         {% for expense in expenses %}
             <li>
                 <strong>Title:</strong> {{ expense.title }}<br>
-                <strong>Amount:</strong> ${{ expense.amount }}<br>
+                <strong>Date:</strong> {{ expense.date }}<br>
+                <strong>Amount:</strong> Rs.{{ expense.amount }}<br>
                 <strong>Category:</strong> {{ expense.category }}<br>
                 <strong>Description:</strong> {{ expense.description|default:"N/A" }}<br>
             </li>

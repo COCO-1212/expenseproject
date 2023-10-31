@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 # Create your models here.
 class Expense(models.Model):
@@ -26,6 +27,7 @@ class Expense(models.Model):
     ("Business Expenses", "Business Expenses"),
 ]
     title = models.CharField(max_length=40)
+    date = models.DateField(default=timezone.now)
     amount = models.DecimalField(max_digits=100, decimal_places=2)
     category = models.CharField(max_length=30, choices=CATEGORIES) 
     description = models.TextField(blank=True, null=True)
