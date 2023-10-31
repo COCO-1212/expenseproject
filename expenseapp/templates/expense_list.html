@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Expense List</title>
+</head>
+<body>
+    <h1>Expense List</h1>
+    <ul>
+        {% for expense in expenses %}
+            <li>
+                <strong>Title:</strong> {{ expense.title }}<br>
+                <strong>Amount:</strong> ${{ expense.amount }}<br>
+                <strong>Category:</strong> {{ expense.category }}<br>
+                <strong>Description:</strong> {{ expense.description|default:"N/A" }}<br>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'expenseapp:add_expense' %}">Add Expense</a>
+</body>
+</html>
