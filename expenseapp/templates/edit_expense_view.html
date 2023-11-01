@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Add Expense</title>
+    <title>Edit Expense</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -58,7 +58,7 @@
 </head>
 <body>
     <div class="container">
-        <h1 style="text-align: center;">Add Expense</h1>
+        <h1 style="text-align: center;">Edit Expense</h1>
         <form method="post">
             {% csrf_token %}
             <div class="form-group">
@@ -81,7 +81,7 @@
                 <label for="{{ form.description.id_for_label }}">Description:</label>
                 {{ form.description }}
             </div>
-            <button type="submit">Add Expense</button>
+            <button type="submit">Save Changes</button>
         </form>
     </div>
 </body>
