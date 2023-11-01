@@ -5,14 +5,14 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
+            background-color: #13293D; /* Changed background color */
             margin: 0;
             padding: 0;
         }
 
         h1 {
-            background-color: #333;
-            color: #fff;
+            background-color: white;
+            color: black;
             text-align: center;
             padding: 20px;
         }
@@ -36,7 +36,7 @@
         }
 
         a.edit-link {
-            background-color: #111827;
+            background-color: black;
             color: #fff;
             text-align: center;
             padding: 10px;
@@ -57,66 +57,51 @@
             right: 70px;
         }
 
-        /* button.delete-button {
-            background-color: #FF0000;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            padding: 10px;
-            cursor: pointer;
-        }
-        
-
-        button.delete-button:hover {
-            background-color: #CC0000;
-        } */
         .delete-button {
-  background-color: #111827;
-  border: 1px solid transparent;
-  border-radius: .75rem;
-  box-sizing: border-box;
-  color: #FFFFFF;
-  cursor: pointer;
-  flex: 0 0 auto;
-  font-family: "Inter var", ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  font-size: 1.125rem;
-  font-weight: 600;
-  line-height: 1.5rem;
-  padding: .75rem 1.2rem;
-  text-align: center;
-  text-decoration: none #6B7280 solid;
-  text-decoration-thickness: auto;
-  transition-duration: .2s;
-  transition-property: background-color, border-color, color, fill, stroke;
-  transition-timing-function: cubic-bezier(.4, 0, 0.2, 1);
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  width: auto;
-}
+            background-color: #111827;
+            border: 1px solid transparent;
+            border-radius: .75rem;
+            box-sizing: border-box;
+            color: #FFFFFF;
+            cursor: pointer;
+            flex: 0 0 auto;
+            font-family: "Inter var", ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-size: 1.125rem;
+            font-weight: 600;
+            line-height: 1.5rem;
+            padding: .75rem 1.2rem;
+            text-align: center;
+            text-decoration: none #6B7280 solid;
+            text-decoration-thickness: auto;
+            transition-duration: .2s;
+            transition-property: background-color, border-color, color, fill, stroke;
+            transition-timing-function: cubic-bezier(.4, 0, 0.2, 1);
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            width: auto;
+        }
 
-.delete-button:hover {
-  background-color: red;
-}
+        .delete-button:hover {
+            background-color: red;
+        }
 
-.delete-button:focus {
-  box-shadow: none;
-  outline: 2px solid transparent;
-  outline-offset: 2px;
-}
+        .delete-button:focus {
+            box-shadow: none;
+            outline: 2px solid transparent;
+            outline-offset: 2px;
+        }
 
-@media (min-width: 768px) {
-  .delete-button {
-    padding: .75rem 1.5rem;
-  }
-}
-
-
+        @media (min-width: 768px) {
+            .delete-button {
+                padding: .75rem 1.5rem;
+            }
+        }
 
         a.add-link {
             display: block;
-            background-color: #333;
-            color: #fff;
+            background-color: white;
+            color: black;
             text-align: center;
             padding: 10px;
             text-decoration: none;
@@ -145,8 +130,6 @@
                 <form class="delete-form" method="post" action="{% url 'expenseapp:delete_expense' expense.id %}">
                     {% csrf_token %}
                     <button class="button-40 delete-button" role="button">Delete</button>
-
-                      
                 </form>
             </li>
         {% endfor %}
