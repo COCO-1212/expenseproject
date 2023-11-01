@@ -1,20 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Expense List</title>
+    <title>Your Expenses</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #13293D; /* Changed background color */
+            font-family:  'Lato', sans-serif;
+            background-color: #13293D;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background-color: white;
+            color: black;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
         }
 
         h1 {
-            background-color: white;
-            color: black;
-            text-align: center;
-            padding: 20px;
+            margin: 0;
+        }
+
+        .total-expense {
+            font-weight: bold;
         }
 
         ul {
@@ -29,10 +41,6 @@
             padding: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             position: relative;
-        }
-
-        strong {
-            font-weight: bold;
         }
 
         a.edit-link {
@@ -58,64 +66,64 @@
         }
 
         .delete-button {
-            background-color: #111827;
-            border: 1px solid transparent;
-            border-radius: .75rem;
-            box-sizing: border-box;
-            color: #FFFFFF;
-            cursor: pointer;
-            flex: 0 0 auto;
-            font-family: "Inter var", ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-            font-size: 1.125rem;
-            font-weight: 600;
-            line-height: 1.5rem;
-            padding: .75rem 1.2rem;
-            text-align: center;
-            text-decoration: none #6B7280 solid;
-            text-decoration-thickness: auto;
-            transition-duration: .2s;
-            transition-property: background-color, border-color, color, fill, stroke;
-            transition-timing-function: cubic-bezier(.4, 0, 0.2, 1);
-            user-select: none;
-            -webkit-user-select: none;
-            touch-action: manipulation;
-            width: auto;
+        background-color: #111827;
+        border: 1px solid transparent;
+        border-radius: .5rem; /* Reduce border radius to make it smaller */
+        box-sizing: border-box;
+        color: #FFFFFF;
+        cursor: pointer;
+        flex: 0 0 auto;
+        font-family: "Inter var", ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        font-size: 1rem; /* Reduce font size to make it smaller */
+        font-weight: 600;
+        line-height: 1.25rem; /* Reduce line height to make it smaller */
+        padding: .5rem 1rem; /* Reduce padding to make it smaller */
+        text-align: center;
+        text-decoration: none #6B7280 solid;
+        text-decoration-thickness: auto;
+        transition-duration: .2s;
+        transition-property: background-color, border-color, color, fill, stroke;
+        transition-timing-function: cubic-bezier(.4, 0, 0.2, 1);
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        width: auto;
+    }
+
+    .delete-button:hover {
+        background-color: red;
+    }
+    
+    .button-container {
+            display: flex;
+            justify-content: center;
         }
 
-        .delete-button:hover {
-            background-color: red;
-        }
-
-        .delete-button:focus {
-            box-shadow: none;
-            outline: 2px solid transparent;
-            outline-offset: 2px;
-        }
-
-        @media (min-width: 768px) {
-            .delete-button {
-                padding: .75rem 1.5rem;
-            }
-        }
-
-        a.add-link {
+        a.add-link, a.infographics-button {
             display: block;
             background-color: white;
             color: black;
             text-align: center;
             padding: 10px;
             text-decoration: none;
-            margin: 20px auto;
+            margin: 20px 40px;
             width: 150px;
         }
 
         a.add-link:hover {
-            background-color: #555;
+            background-color: #33B5B5;
+        }
+
+        a.infographics-button:hover {
+            background-color: #87B4D7;
         }
     </style>
 </head>
 <body>
-    <h1>Expense List</h1>
+    <div class="header">
+        <h1>Expense List</h1>
+        <p class="total-expense">Total Expense: Rs.{{ total_expense }}</p>
+    </div>
     <ul>
         {% for expense in expenses %}
             <li>
@@ -129,11 +137,14 @@
                 <!-- Delete Expense Form -->
                 <form class="delete-form" method="post" action="{% url 'expenseapp:delete_expense' expense.id %}">
                     {% csrf_token %}
-                    <button class="button-40 delete-button" role="button">Delete</button>
+                    <button class="button-40 delete-button" role="button" onclick="return confirm('Are you sure you want to delete this expense?')">Delete</button>
                 </form>
             </li>
         {% endfor %}
     </ul>
-    <a class="add-link" href="{% url 'expenseapp:add_expense' %}">Add Expense</a>
+    <div class="button-container">
+        <a class="infographics-button" href="{% url 'expenseapp:infographics' %}">View Infographics</a>
+        <a class="add-link" href="{% url 'expenseapp:add_expense' %}">Add Expense</a>
+    </div>
 </body>
 </html>
