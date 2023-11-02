@@ -120,7 +120,10 @@
     </style>
 </head>
 <body>
-    <h1>Expense List</h1>
+    <div class="header">
+        <h1>Your Expenses</h1>
+        <p class="total-expense">Total Expense: Rs.{{ total_expense }}</p>
+    </div>
     <ul>
         {% for expense in expenses %}
             <li>
