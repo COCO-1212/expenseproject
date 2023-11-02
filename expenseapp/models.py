@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.core.validators import MinValueValidator
 
 # Create your models here.
 class Expense(models.Model):
@@ -26,9 +27,10 @@ class Expense(models.Model):
     ("Miscellaneous", "Miscellaneous"),
     ("Business Expenses", "Business Expenses"),
 ]
+    # tracking expenses with fields for title, date, amount, category, and an optional description.
     title = models.CharField(max_length=40)
     date = models.DateField(default=timezone.now)
-    amount = models.DecimalField(max_digits=100, decimal_places=2)
+    amount = models.DecimalField(max_digits=100, decimal_places=2, validators=[MinValueValidator(0.01)])
     category = models.CharField(max_length=30, choices=CATEGORIES) 
     description = models.TextField(blank=True, null=True)
 

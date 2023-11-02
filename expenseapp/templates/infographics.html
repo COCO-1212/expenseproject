@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Infographics</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #13293D;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            background-color: #3498db;
+            color: #fff;
+            padding: 20px;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+            margin: 20px auto;
+        }
+
+        p {
+            margin: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        a:hover {
+            background-color: #1e70bf;
+        }
+    </style>
+</head>
+<body>
+    <h1>Infographics</h1>
+    
+    <img src="data:image/png;base64,{{ chart_image }}" alt="Expense by Category">
+
+    <p><a href="{% url 'expenseapp:expense_list' %}">Back to Expenses</a></p>
+</body>
+</html>
