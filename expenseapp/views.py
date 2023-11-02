@@ -46,28 +46,7 @@ def delete_expense(request, expense_id):
         
     return redirect('expenseapp:expense_list') 
 
-import matplotlib.pyplot as plt
-import io
-import base64
-
-#retrieves and summarizes expense data for creating a categorical spending chart.
-def infographics(request):
-    # Get the data for your categorical spending chart
-    spending = Expense.objects.values('category').annotate(total=Sum('amount'))
+    return render(request, 'delete_expense_view.html', {'expense': expense})
     
-    category_labels = [item['category'] for item in spending]
-    category_values = [item['total'] for item in spending]
-
-    # Create the categorical spending chart
-    plt.figure(figsize=(8, 6))
-    plt.pie(category_values, labels=category_labels, autopct='%1.1f%%', startangle=140)
-    plt.title('Categorical Spending Chart')
-
-    # Save the chart as an image
-    buffer = io.BytesIO()
-    plt.savefig(buffer, format='png')
-    buffer.seek(0)
-    chart_image = base64.b64encode(buffer.read()).decode()
-    buffer.close()
-
-    return render(request, 'infographics.html', {'chart_image': chart_image})
+        
+        
