@@ -26,6 +26,7 @@ class Expense(models.Model):
     ("Miscellaneous", "Miscellaneous"),
     ("Business Expenses", "Business Expenses"),
 ]
+    # tracking expenses with fields for title, date, amount, category, and an optional description.
     title = models.CharField(max_length=40)
     date = models.DateField(default=timezone.now)
     amount = models.DecimalField(max_digits=100, decimal_places=2)

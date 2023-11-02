@@ -1,10 +1,11 @@
-from django.shortcuts import render, redirect,get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Sum
 
 # Create your views here.
 from .forms import ExpenseForm
 from .models import Expense
 
+# adding an expense via a form submission and redirects to the expense list on success.
 def add_expense(request):
     if request.method == 'POST':
         form = ExpenseForm(request.POST)
@@ -50,6 +51,7 @@ import matplotlib.pyplot as plt
 import io
 import base64
 
+#retrieves and summarizes expense data for creating a categorical spending chart.
 def infographics(request):
     # Get the data for your categorical spending chart
     spending = Expense.objects.values('category').annotate(total=Sum('amount'))
